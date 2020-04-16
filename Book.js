@@ -1,8 +1,8 @@
-let myFirstBook = {
+/*let myFirstBook = {
     title: verre cassé,
     author: Alain Mabanckou,
     description: roman adulte,
-    numberPages: 120,
+    pages: 120,
     read: false,
 
 };
@@ -10,14 +10,14 @@ let mySecondBook = {
   title: lLes jardins de lumières,
   author: Amin Maloof;
   description: roman adulte,
-  numberPages: 252,
+  pages: 252,
   read: false,
 };
 let myThirdBook = {
   title: tout mon chat,
   author: Gilles Bachelet,
   description: "album jeunesse,
-  numberPages: 64,
+  pages: 64,
   read: false,
 };
 
@@ -25,57 +25,47 @@ let myFourthBook = {
   title: Le magicien d'Oz;
   author: Robert Sabuda,
   description: album jeunesse,
-  numberPages: 10,
+  pages: 10,
   read: false,
 };
 let bookTitle = myBook.title;
 let bookAuthor = myBook.author;
 let bookDescription = myBook.description;
-let bookNumberPages = myBook.NumberPages;
+let bookpages = myBook.pages;
 let bookRead = myBook.read;
-
+*/
 
 export class Book {
-  constructor(title, author, description, numberPages, read){
+  constructor(title, author, description, pages, currentPage, read){
   this.title = title;
   this.author = author;
   this.description = description;
-  this.numberPages = numberPages;
-  this.read = read;
+  this.pages = pages;
+  this.read = false;
+  this.currentPage = currentPage;
+  }
+  readBook(page){
 
-};
-};
+      if(page < 1 || page > this.pages){
+        return  0;
+        alert( "Pas encore lu");
+      }else if (page  >= 1 && page < this.pages){
 
-let myFirstBook = new Book("verre cassé", "Alain Mabanckou", "roman adulte",120, false);
-let mysecondBook = new Book ("les jardins de lumières", "Amin Maloof", "roman adulte", 252, false);
-let mythirdBook = new Book ("tout mon chat", "Gilles Bachelet", "album jeunesse",64, false);
-let myfourthBook = new Book ("le magicien d'Oz", "Robert Sabuda", "album jeunesse", 10, false);
+        this.currentPage = page;
+          return  1;
+        console.log(page);
+      }else if (page===this.pages){
+        
+        this.read = true;
+        this.currentPage = page;
+          return 1;
+      }
+  }
+}
 
-export {myFirstBook, mySecondBook, myThirdBook, myFourthBook};
+let myFirstBook = new Book("verre cassé", "Alain Mabanckou", "roman adulte",120);
+let mySecondBook = new Book("les jardins de lumières", "Amin Maloof", "roman adulte", 252);
+let myThirdBook = new Book("tout mon chat", "Gilles Bachelet", "album jeunesse",64);
+let myFourthBook = new Book("le magicien d'Oz", "Robert Sabuda", "album jeunesse", 10);
 
-let readBook (page) = book.length;
-export{book, numberPages};
-
-class book {
-  constructor(title, numberPages, currentPage){
-    this.title = title;
-    this.numberPages = numberPages;
-    this.currentPage = 0;
-    this.page = [];
-    this.currentPage = book.length - this.page;
-
-    if(page < 1 || page >= numberPages){
-      this.numberPages = 0;
-      this.currentPage = "Pas encore lu";
-    }else if (page > 1 && page <= numberPages){
-      this.numberPages = "en train de lire";
-      this.currentPage = page;
-      console.log(page);
-    }else if (page===numberPage){
-      this.numberpage = 1;
-      this.currentPage = "lu";
-    }
-    }
-  };
-
-export const books = [];
+export let books = [myFirstBook, mySecondBook, myThirdBook, myFourthBook];
